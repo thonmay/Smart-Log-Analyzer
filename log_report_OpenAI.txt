@@ -1,0 +1,57 @@
+Summary of Log File (2025-09-09):
+
+1. **Source Code Fetching**
+   - 10:00:02 [INFO]: Fetching source code from Git repository
+   - 10:00:03 [WARNING]: Git checkout took longer than expected (15s)
+   - 10:00:04 [INFO]: Source code fetched successfully
+
+2. **Lint Checks**
+   - 10:00:08 [INFO]: Running lint checks
+   - 10:00:09 [WARNING]: Found deprecated API usage in auth_service.py: line 120 (logged twice)
+   - 10:00:10 [INFO]: Lint checks completed with 1 warning (logged twice)
+
+3. **Unit Tests**
+   - 10:01:00 [INFO]: Running unit tests (logged twice)
+   - 10:01:01 [ERROR]: test_login.py::TestLogin::test_invalid_login FAILED - AssertionError: Expected error message not found
+   - 10:01:02 [INFO]: test_login.py::TestLogin::test_valid_login PASSED
+   - 10:01:04 [INFO]: test_cart.py::TestCart::test_remove_item PASSED
+   - 10:01:05 [INFO]: Unit tests summary: 23 passed, 1 failed
+
+4. **Integration Tests**
+   - 10:02:00 [INFO]: Running integration tests
+   - 10:02:02 [INFO]: test_payment_service.py::TestPayment::test_success PASSED
+   - 10:02:03 [CRITICAL]: test_payment_service.py::TestPayment::test_timeout ERROR - TimeoutError: Request to payment gateway took too long
+   - 10:02:04 [INFO]: test_notification_service.py::TestNotify::test_email_delivery PASSED (logged twice)
+   - 10:02:05 [WARNING]: test_notification_service.py::TestNotify::test_sms_delivery SLOW - took 5s (logged twice)
+   - 10:02:06 [INFO]: Integration tests summary: 45 passed, 1 error, 1 warning (logged twice)
+
+5. **Application Deployment**
+   - 10:03:00 [INFO]: Packaging application for deployment
+   - 10:03:10 [INFO]: Deploying to staging environment
+   - 10:03:12 [FATAL]: Deployment failed - Service Unavailable (HTTP 503) for 'user-service' (logged twice)
+   - 10:03:13 [ERROR]: DatabaseError: could not connect to database "users_db" (logged twice)
+   - 10:03:14 [INFO]: Retrying database connection (attempt 1 of 3)
+   - 10:03:15 [INFO]: Retrying database connection (attempt 2 of 3)
+   - 10:03:16 [ERROR]: DatabaseError: connection refused after retries
+
+6. **Rollback Process**
+   - 10:03:18 [INFO]: Rolling back deployment (logged twice)
+   - 10:03:19 [WARNING]: Rollback took longer than expected (12s)
+   - 10:03:20 [INFO]: Rollback completed successfully
+
+7. **Build Finalization**
+   - 10:03:36 [INFO]: Finalizing build
+   - 10:03:37 [ERROR]: Build status: FAILURE - See previous logs for details
+   - 10:03:38 [INFO]: Build process terminated
+
+---
+
+**Key Issues:**
+- Git checkout delay during source code fetch.
+- Deprecated API usage found in lint checks.
+- One unit test failure related to invalid login error message.
+- Integration test failure due to payment gateway timeout.
+- Slow SMS delivery warning.
+- Deployment failed due to service unavailability and database connection errors.
+- Rollback took longer than expected.
+- Final build failed due to above errors.
